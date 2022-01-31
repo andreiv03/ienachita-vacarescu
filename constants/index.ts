@@ -1,0 +1,4 @@
+const GRAPHCMS_API = process.env.GRAPHCMS_API;
+const GRAPHCMS_TOKEN = process.env.GRAPHCMS_TOKEN;
+
+export { GRAPHCMS_API, GRAPHCMS_TOKEN };
