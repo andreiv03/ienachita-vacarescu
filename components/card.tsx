@@ -28,7 +28,7 @@ const Card: React.FC<PropsInterface> = ({ post }) => {
           <div className={styles.categories}>
             {post.categories.map(category => (
               <div key={category.slug} className={styles.category}>
-                <Link href={`/category/${category.slug}`}>
+                <Link href={`/category/${category.slug}`} passHref>
                   <span>{category.name}</span>
                 </Link>
               </div>
@@ -45,7 +45,7 @@ const Card: React.FC<PropsInterface> = ({ post }) => {
         </div>
       </div>
 
-      <Link href={`/post/${post.slug}`}>
+      <Link href={`/post/${post.slug}`} passHref>
         <span className={styles.overlay} />
       </Link>
     </article>

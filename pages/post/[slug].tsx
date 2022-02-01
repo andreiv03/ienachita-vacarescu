@@ -45,7 +45,7 @@ const Post: NextPage<PropsInterface> = ({ post, relatedPosts, comments }) => {
             <div className={styles.categories}>
               {post.categories.map(category => (
                 <div key={category.slug} className={styles.category}>
-                  <Link href={`/category/${category.slug}`}>
+                  <Link href={`/category/${category.slug}`} passHref>
                     <span>{category.name}</span>
                   </Link>
                 </div>

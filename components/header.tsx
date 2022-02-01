@@ -17,14 +17,14 @@ const Header: React.FC = () => {
 
     if (scrollVerticalDirection === "up") setIsHeaderVisible(true);
     else setIsHeaderVisible(false);
-  }, [scrollY]);
+  }, [scrollY, scrollVerticalDirection]);
 
   return (
     <header className={styles.header}>
       <div className={`${styles.wrapper} ${isHeaderFixed ? styles.fixed : ""} ${isHeaderFixed && isHeaderVisible ? styles.visible : ""}`}>
         <div className={styles.content}>
           <div className={styles.logo}>
-            <Link href="/">
+            <Link href="/" passHref>
               <span>Ienachita</span>
             </Link>
           </div>
@@ -34,7 +34,7 @@ const Header: React.FC = () => {
           </div>
 
           <div className={styles.buttons}>
-            <Link href="/">
+            <Link href="/" passHref>
               <button type="button">
                 <span>Contact us</span>
               </button>
