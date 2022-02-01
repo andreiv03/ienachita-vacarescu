@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import moment from "moment";
+import "moment/locale/ro";
 
 import Helpers from "../utils/helpers";
 import type { PostInterface } from "../interfaces/posts-interfaces";

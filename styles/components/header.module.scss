@@ -14,12 +14,10 @@
       top: calc(0px - var(--header-height));
       left: 0;
       z-index: 5;
-      opacity: 0;
     }
 
     &.visible {
       top: 0.75rem;
-      opacity: 1;
 
       .content {
         box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;

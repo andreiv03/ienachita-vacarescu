@@ -1,0 +1,181 @@
+.comments {
+  max-width: 675px;
+  margin: 4rem auto;
+  padding: 0 0.5rem;
+
+  .title {
+    margin-bottom: 2rem;
+    font-size: 1.728rem;
+    font-weight: 700;
+  }
+
+  form {
+    padding: 1.5rem;
+    background: var(--light-blue);
+    border-radius: 0.25rem;
+
+    .row {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    input,
+    textarea {
+      padding: 0.75rem 1.25rem;
+      background: var(--background-one);
+      border-radius: 0.25rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      flex: 1;
+    }
+
+    textarea {
+      width: 100% !important;
+      min-height: 5rem;
+      max-height: 10rem;
+      margin: 1.5rem 0;
+      display: block;
+    }
+
+    ::placeholder {
+      color: var(--foreground-two);
+    }
+
+    button {
+      position: relative;
+      width: 100%;
+      padding: 0.75rem 0;
+      background: var(--blue);
+      border-radius: 0.2rem;
+      color: var(--background-one);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 100ms ease-in;
+
+      &:not(.loading):not(.submit):hover {
+        background: var(--night-blue);
+      }
+
+      &:not(.loading):not(.submit):disabled {
+        cursor: not-allowed;
+
+        &:hover {
+          background: var(--error);
+        }
+      }
+
+      &.loading {
+        cursor: initial;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          width: 1rem;
+          height: 1rem;
+          margin: auto;
+          border: 3px solid transparent;
+          border-top-color: var(--background-one);
+          border-radius: 50%;
+          animation: loading-spinner 1000ms ease infinite;
+        }
+
+        span {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      &.submit {
+        cursor: initial;
+
+        span {
+          &:nth-child(1) {
+            opacity: 0;
+            visibility: hidden;
+          }
+
+          &:nth-child(2) {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+
+      span {
+        &:nth-child(2) {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+    }
+  }
+
+  .container {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    background: var(--light-blue);
+    border-radius: 0.25rem;
+
+    .comment {
+      padding: 1.25rem 1.5rem;
+      background: var(--background-one);
+      border-radius: 0.25rem;
+
+      &:not(:last-child) {
+        margin-bottom: 1.5rem;
+      }
+
+      h3 {
+        color: var(--foreground-three);
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-transform: capitalize;
+      }
+
+      h2 {
+        margin: 0.25rem 0 0.75rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      p {
+        color: var(--foreground-two);
+        font-size: 0.9rem;
+        font-weight: 500;
+        line-height: 1.9;
+      }
+    }
+  }
+}
+
+// Keyframes
+@keyframes loading-spinner {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Media Queries
+@media screen and (max-width: 675px) {
+  .comments {
+    padding: 0 5vw;
+
+    .row {
+      flex-direction: column;
+    }
+  }
+}

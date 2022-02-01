@@ -1,0 +1,55 @@
+.button {
+  position: fixed;
+  right: 3rem;
+  bottom: -3.5rem;
+  z-index: 3;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: var(--blue);
+  border-radius: 50%;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 150ms ease-out;
+
+  &.active {
+    bottom: 3rem;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  svg {
+    color: var(--background-one);
+    font-size: 1.75rem;
+  }
+}
+
+// Media Queries
+@media screen and (max-width: 1024px) {
+  .button {
+    right: 2rem;
+
+    &.active {
+      bottom: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .button {
+    right: 5vw;
+    width: 2.5rem;
+    height: 2.5rem;
+
+    &.active {
+      bottom: 5vw;
+    }
+
+    svg {
+      font-size: 1.5rem;
+    }
+  }
+}
