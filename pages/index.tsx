@@ -29,11 +29,17 @@ const Home: NextPage<PropsInterface> = ({ posts }) => {
 }
 
 export const getStaticProps = async () => {
-  const { default: PostsService } = await import("../services/posts-service");
-  const posts = await PostsService.getAllPosts();
+  const { default: postsService } = await import("../services/posts-service");
+  const posts = await postsService.getAllPosts();
+
+  const { default: cateogriesService } = await import("../services/categories-service");
+  const categories = await cateogriesService.getCategories();
 
   return {
-    props: { posts },
+    props: {
+      posts,
+      categories
+    },
     revalidate: 60
   };
 }

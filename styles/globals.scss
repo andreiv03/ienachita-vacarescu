@@ -1,19 +1,19 @@
 :root {
-  --foreground-one: #00102f;
-  --foreground-two: #677183;
-  --foreground-three: #979eaa;
+  --foreground-one: #282828;
+  --foreground-two: #454545;
   --background-one: #ffffff;
-  --background-two: #e6e6e6;
+  --background-two: #f7f7f7;
 
-  --blue: #0a5cff;
-  --night-blue: #0044cc;
-  --light-blue: #e6efff;
-  --dark-blue: #d1e2ff;
-
-  --valid: #01d5ae;
-  --error: #ff716d;
+  --accent: #216fed;
+  --dark-accent: #0c0c45;
+  --light-accent: #7877a7;
+  --error: #f54d4d;
 
   --header-height: 80px;
+
+  --large-query: 1024px;
+  --medium-query: 700px;
+  --small-query: 475px;
 }
 
 *,
@@ -31,8 +31,9 @@ textarea,
 button,
 code {
   color: var(--foreground-one);
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", Arial, sans-serif;
   font-size: 16px;
+  letter-spacing: 0.25px;
 }
 
 input,
@@ -53,7 +54,7 @@ body {
 }
 
 ::selection {
-  background: var(--blue);
+  background: var(--accent);
   color: var(--background-one);
 }
 

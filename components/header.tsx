@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import { RiSearchEyeFill, RiMenuFill } from "react-icons/ri";
 
 import useScroll from "../hooks/use-scroll";
 import styles from "../styles/components/header.module.scss";
@@ -22,33 +22,23 @@ const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={`${styles.wrapper} ${isHeaderFixed ? styles.fixed : ""} ${isHeaderFixed && isHeaderVisible ? styles.visible : ""}`}>
-        <div className={styles.content}>
+        <Link href="/" passHref>
           <div className={styles.logo}>
-            <Link href="/" passHref>
-              <span>Ienachita</span>
-            </Link>
+            <Image
+              src="/logo.svg"
+              alt={`National College "Ienăchiță Văcărescu"`}
+              layout="fill"
+            />
           </div>
+        </Link>
 
-          <div className={styles.links}>
-            
-          </div>
-
-          <div className={styles.buttons}>
-            <Link href="/" passHref>
-              <button type="button">
-                <span>Contact us</span>
-              </button>
-            </Link>
-
-            <button type="button">
-              <span>Search</span>
-              <RiSearchEyeFill />
-            </button>
-          </div>
-
-          <div className={styles.menu}>
-            <RiMenuFill />
-          </div>
+        <div className={styles.menu}>
+          <span>Menu</span>
+          <svg width="20" height="15">
+            <rect width="15" height="2" x="5" y="0" />
+            <rect width="10" height="2" x="10" y="6.5" />
+            <rect width="20" height="2" x="0" y="13" />
+          </svg>
         </div>
       </div>
     </header>

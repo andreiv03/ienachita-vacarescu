@@ -1,17 +1,14 @@
 .card {
-  position: relative;
-  min-width: 275px;
   height: fit-content;
-  flex: 1;
+  cursor: pointer;
+  transition: transform 150ms ease-in-out;
 
   &:hover {
-    .image {
-      transform: scale(1.05);
-    }
+    transform: translateY(-4px);
 
     .details {
-      .title {
-        color: var(--blue);
+      h3 {
+        color: var(--accent);
       }
     }
   }
@@ -19,94 +16,37 @@
   .image {
     position: relative;
     width: 100%;
-    height: 200px;
-    transition: 100ms ease-in;
+    height: 175px;
+    border-radius: 0.5rem;
+    overflow: hidden;
 
     img {
-      border-radius: 0.25rem;
       object-fit: cover;
     }
   }
 
   .details {
-    padding: 1.25rem 0.5rem 0.5rem;
+    padding: 1rem 0.5rem;
 
-    .categories {
-      position: relative;
-      z-index: 1;
-      width: fit-content;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-
-      .category {
-        padding: 0.2rem 1rem;
-        background: var(--light-blue);
-        border-radius: 0.2rem;
-        color: var(--blue);
-        font-size: 0.8rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 100ms ease-in;
-
-        &:hover {
-          background: var(--dark-blue);
-        }
-      }
-    }
-
-    .title {
-      margin: 1rem 0;
-      font-size: 1.2rem;
+    h3 {
+      font-size: 1.25rem;
       font-weight: 700;
-      line-height: 1.5;
-      transition: 100ms ease-in;
+      line-height: 1.4;
+      transition: color 100ms ease-in;
     }
 
-    .excerpt {
-      margin: 1rem 0;
+    p {
+      margin: 0.75rem 0 1rem;
       color: var(--foreground-two);
       font-size: 0.9rem;
       font-weight: 500;
-      line-height: 1.9;
+      line-height: 1.8;
     }
 
-    .row {
-      display: flex;
-      align-items: center;
-
-      h3 {
-        position: relative;
-        color: var(--foreground-three);
-        font-size: 0.8rem;
-        font-weight: 500;
-        text-transform: capitalize;
-
-        &:not(:last-child) {
-          margin-right: 1.6rem;
-
-          &:after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            right: calc(-0.8rem - 2px);
-            transform: translateY(-50%);
-            width: 4px;
-            height: 4px;
-            background: var(--foreground-three);
-            border-radius: 50%;
-          }
-        }
-      }
+    h5 {
+      color: var(--foreground-two);
+      font-size: 0.8rem;
+      font-weight: 500;
     }
-  }
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    cursor: pointer;
   }
 }

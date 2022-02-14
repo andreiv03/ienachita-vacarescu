@@ -1,12 +1,12 @@
 .button {
   position: fixed;
   right: 3rem;
-  bottom: -3.5rem;
+  bottom: -3rem;
   z-index: 3;
-  width: 3.5rem;
-  height: 3.5rem;
-  background: var(--blue);
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
+  background: var(--accent);
   opacity: 0;
   visibility: hidden;
   display: flex;
@@ -38,14 +38,14 @@
   }
 }
 
-@media screen and (max-width: 675px) {
+@media screen and (max-width: 700px) {
   .button {
-    right: 5vw;
-    width: 2.5rem;
-    height: 2.5rem;
+    right: 1.25rem;
+    width: 40px;
+    height: 40px;
 
     &.active {
-      bottom: 5vw;
+      bottom: 1.25rem;
     }
 
     svg {

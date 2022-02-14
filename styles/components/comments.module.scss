@@ -1,30 +1,32 @@
 .comments {
-  max-width: 675px;
-  margin: 4rem auto;
-  padding: 0 0.5rem;
+  max-width: var(--medium-query);
+  margin: 0 auto 5rem;
+  padding-top: 5rem;
+  border-top: thin solid var(--background-two);
 
-  .title {
+  h2 {
     margin-bottom: 2rem;
-    font-size: 1.728rem;
+    font-size: 1.75rem;
     font-weight: 700;
   }
 
   form {
-    padding: 1.5rem;
-    background: var(--light-blue);
-    border-radius: 0.25rem;
-
     .row {
       display: flex;
-      gap: 1.5rem;
+      gap: 1rem;
+    }
+
+    ::placeholder {
+      color: var(--foreground-two);
     }
 
     input,
     textarea {
-      padding: 0.75rem 1.25rem;
-      background: var(--background-one);
-      border-radius: 0.25rem;
-      font-size: 0.9rem;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      background: var(--background-two);
+      color: var(--foreground-one);
+      font-size: 1rem;
       font-weight: 500;
       flex: 1;
     }
@@ -33,28 +35,24 @@
       width: 100% !important;
       min-height: 5rem;
       max-height: 10rem;
-      margin: 1.5rem 0;
+      margin: 1rem 0;
       display: block;
-    }
-
-    ::placeholder {
-      color: var(--foreground-two);
     }
 
     button {
       position: relative;
       width: 100%;
-      padding: 0.75rem 0;
-      background: var(--blue);
-      border-radius: 0.2rem;
+      padding: 1rem 0;
+      border-radius: 0.5rem;
+      background: var(--accent);
       color: var(--background-one);
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 500;
       cursor: pointer;
-      transition: 100ms ease-in;
+      transition: background 100ms ease-in-out;
 
       &:not(.loading):not(.submit):hover {
-        background: var(--night-blue);
+        background: var(--dark-accent);
       }
 
       &:not(.loading):not(.submit):disabled {
@@ -120,39 +118,37 @@
   }
 
   .container {
-    margin-top: 2.5rem;
-    padding: 1.5rem;
-    background: var(--light-blue);
-    border-radius: 0.25rem;
+    margin-top: 1.5rem;
 
     .comment {
-      padding: 1.25rem 1.5rem;
-      background: var(--background-one);
-      border-radius: 0.25rem;
+      padding: 1.5rem 0;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
 
       &:not(:last-child) {
-        margin-bottom: 1.5rem;
+        border-bottom: thin solid var(--background-two);
+      }
+
+      h5 {
+        color: var(--foreground-two);
+        font-size: 0.8rem;
+        font-weight: 500;
       }
 
       h3 {
-        color: var(--foreground-three);
-        font-size: 0.8rem;
-        font-weight: 500;
-        text-transform: capitalize;
-      }
-
-      h2 {
-        margin: 0.25rem 0 0.75rem;
-        font-size: 1.2rem;
+        margin: 0.5rem 0 0.75rem;
+        font-size: 1.25rem;
         font-weight: 700;
         line-height: 1.5;
       }
 
       p {
         color: var(--foreground-two);
-        font-size: 0.9rem;
+        font-size: 1rem;
         font-weight: 500;
-        line-height: 1.9;
+        line-height: 1.8;
       }
     }
   }
@@ -170,9 +166,10 @@
 }
 
 // Media Queries
-@media screen and (max-width: 675px) {
+@media screen and (max-width: 700px) {
   .comments {
-    padding: 0 5vw;
+    margin-bottom: 4rem;
+    padding-top: 4rem;
 
     .row {
       flex-direction: column;

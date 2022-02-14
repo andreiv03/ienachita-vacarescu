@@ -6,6 +6,6 @@ export interface CommentInterface {
 
 export interface CommentFormDataInterface {
   email: string;
-  name: string;
   message: string;
+  name: string;
 };

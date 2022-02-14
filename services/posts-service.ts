@@ -3,7 +3,7 @@ import { gql } from "graphql-request";
 import client from "./graphcms";
 import type { PostInterface } from "../interfaces/posts-interfaces";
 
-class PostsServiceClass {
+class PostsService {
   async getPost(slug: string): Promise<PostInterface> {
     const query = gql`
       query getPost($slug: String!) {
@@ -16,7 +16,7 @@ class PostsServiceClass {
               url
             }
           }
-          categories {
+          category {
             name
             slug
           }
@@ -44,11 +44,8 @@ class PostsServiceClass {
         posts {
           author {
             name
-            photo {
-              url
-            }
           }
-          categories(first: 2) {
+          category {
             name
             slug
           }
@@ -74,7 +71,7 @@ class PostsServiceClass {
           author {
             name
           }
-          categories(first: 2) {
+          category {
             name
             slug
           }
@@ -93,21 +90,21 @@ class PostsServiceClass {
     return result.posts;
   }
 
-  async getRelatedPosts(slug: string, categories: string[]): Promise<PostInterface[]> {
+  async getRelatedPosts(slug: string, category: string): Promise<PostInterface[]> {
     const query = gql`
-      query getRelatedPosts($slug: String!, $categories: [String!]) {
+      query getRelatedPosts($slug: String!, $category: String!) {
         posts(where: {
           slug_not: $slug,
           AND: {
-            categories_some: {
-              slug_in: $categories
+            category: {
+              slug: $category
             }
           } 
         }, last: 3) {
           author {
             name
           }
-          categories(first: 2) {
+          category {
             name
             slug
           }
@@ -122,10 +119,18 @@ class PostsServiceClass {
       }
     `;
 
-    const result = await client.request(query, { slug, categories });
+    const result = await client.request(query, { slug, category });
     return result.posts;
   }
-}
 
-const PostsService = new PostsServiceClass();
-export default PostsService;
+  async getCategoryPosts(slug: string): Promise<PostInterface[]> {
+    const query = gql`
+    `;
+
+    const result = await client.request(query, { slug });
+    return result.post;
+  }
+};
+
+const postsService = new PostsService();
+export default postsService;

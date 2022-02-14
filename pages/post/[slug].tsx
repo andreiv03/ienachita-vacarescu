@@ -1,12 +1,10 @@
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import Image from "next/image";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import moment from "moment";
-import "moment/locale/ro";
 
-import RichTextConverter from "../../utils/rich-text-converter";
+import richTextConverter from "../../utils/rich-text-converter";
 import type { PostInterface } from "../../interfaces/posts-interfaces";
 import type { CommentInterface } from "../../interfaces/comments-interfaces";
 
@@ -30,102 +28,96 @@ interface GetStaticPropsInterface {
 const Post: NextPage<PropsInterface> = ({ post, relatedPosts, comments }) => {
   return (
     <div className={styles.page}>
-      <div className={styles.wrapper}>
-        <div className={styles.image}>
-          <Image
-            src={post.image.url}
-            alt={post.title}
-            layout="fill"
-            priority
+      <div className={styles.top_section}>
+        <h1>{post.title}</h1>
+        <p>{post.excerpt}</p>
+
+        <div className={styles.informations}>
+          <div className={styles.photo}>
+            <Image
+              src={post.author.photo.url}
+              alt={post.author.name}
+              layout="fill"
+            />
+          </div>
+
+          <div className={styles.text}>
+            <h3>Written by <span>{post.author.name}</span></h3>
+            <h4>Posted on {moment(post.createdAt).format("dddd, MMMM DD, YYYY")}</h4>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.image}>
+        <Image
+          src={post.image.url}
+          alt={post.title}
+          layout="fill"
+          priority
+        />
+      </div>
+
+      <article className={styles.article}>
+        <div className={styles.content}>
+          <RichText
+            content={post.content.raw}
+            renderers={{
+              h1: richTextConverter.headingElement,
+              h2: richTextConverter.headingElement,
+              h3: richTextConverter.headingElement,
+              h4: richTextConverter.headingElement,
+              h5: richTextConverter.headingElement,
+              h6: richTextConverter.headingElement,
+              a: richTextConverter.linkElement,
+              img: richTextConverter.imageElement,
+              code_block: richTextConverter.codeBlockElement
+            }}
           />
         </div>
 
-        <div className={styles.top_section}>
-          {post.categories && post.categories.length ? (
-            <div className={styles.categories}>
-              {post.categories.map(category => (
-                <div key={category.slug} className={styles.category}>
-                  <Link href={`/category/${category.slug}`} passHref>
-                    <span>{category.name}</span>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          ) : null}
-
-          <h1 className={styles.title}>{post.title}</h1>
-          <p className={styles.excerpt}>{post.excerpt}</p>
-
-          <div className={styles.author}>
-            <div className={styles.photo}>
-              <Image
-                src={post.author.photo.url}
-                alt={post.author.name}
-                layout="fill"
-              />
-            </div>
-
-            <div className={styles.column}>
-              <h3>{post.author.name}</h3>
-              <h4>{moment(post.createdAt).format("dddd, DD MMMM YYYY, hh:mm A")}</h4>  
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.arrows}>
+        <div className={styles.end}>
+          <h6>Thanks for reading!</h6>
           <div className={styles.container}>
             <span />
             <span />
             <span />
           </div>
         </div>
-
-        <div className={styles.content}>
-          {post.content && (
-            <RichText
-              content={post.content.raw}
-              renderers={{
-                a: RichTextConverter.linkElement,
-                img: RichTextConverter.imageElement,
-                code_block: ({ children }) => <p>{children}</p>
-              }}
-            />
-          )}
-        </div>
-
-        <div className={styles.delimitation}>
-          <h6>End of article</h6>
-          <div className={styles.container}>
-            <span />
-            <span />
-            <span />
-          </div>
-        </div>
-      </div>
+      </article>
 
       <Comments comments={comments} slug={post.slug} />
 
-      <div className={styles.posts}>
-        <h2 className={styles.title}>Related Articles</h2>
-        <div className={styles.container}>
-          {relatedPosts && relatedPosts.map((post, index) => (
-            <Card key={index} post={post} />
-          ))}
+      {relatedPosts.length ? (
+        <div className={styles.related_posts}>
+          <h2>Related articles</h2>
+          <div className={styles.container}>
+            {relatedPosts.map((post, index) => <Card key={index} post={post} />)}
+          </div>
         </div>
-      </div>
+      ) : null}
 
       <ScrollToTopButton />
     </div>
   );
 }
 
+export const getStaticPaths = async () => {
+  const { default: postsService } = await import("../../services/posts-service");
+  const posts = await postsService.getAllPosts();
+
+  return {
+    paths: posts.map(({ slug }) => ({ params: { slug } })),
+    fallback: "blocking"
+  };
+}
+
 export const getStaticProps = async ({ params }: GetStaticPropsInterface) => {
-  const { default: PostsService } = await import("../../services/posts-service");
-  const post = await PostsService.getPost(params.slug);
-  const relatedPosts = await PostsService.getRelatedPosts(post.slug, post.categories.map(category => category.slug));
+  const { default: postsService } = await import("../../services/posts-service");
+  const post = await postsService.getPost(params.slug);
+  const relatedPosts = await postsService.getRelatedPosts(post.slug, post.category.slug);
   
-  const { default: CommentsService } = await import("../../services/comments-service");
-  const comments = await CommentsService.getComments(post.slug);
+  const { default: commentsService } = await import("../../services/comments-service");
+  const comments = await commentsService.getComments(post.slug);
 
   return {
     props: {
@@ -134,16 +126,6 @@ export const getStaticProps = async ({ params }: GetStaticPropsInterface) => {
       comments
     },
     revalidate: 60
-  };
-}
-
-export const getStaticPaths = async () => {
-  const { default: PostsService } = await import("../../services/posts-service");
-  const posts = await PostsService.getAllPosts();
-
-  return {
-    paths: posts.map(({ slug }) => ({ params: { slug }})),
-    fallback: "blocking"
   };
 }
 

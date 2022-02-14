@@ -4,8 +4,8 @@ import type { CategoryInterface } from "./categories-interfaces";
 
 export interface PostInterface {
   author: AuthorInterface;
-  categories: CategoryInterface[];
-  content?: {
+  category: CategoryInterface;
+  content: {
     raw: RichTextContent;
   };
   createdAt: string;

@@ -3,7 +3,7 @@ import { gql } from "graphql-request";
 import client from "./graphcms";
 import type { CommentInterface, CommentFormDataInterface } from "../interfaces/comments-interfaces";
 
-class CommentsServiceClass {
+class CommentsService {
   async getComments(slug: string): Promise<CommentInterface[]> {
     const query = gql`
       query getComments($slug: String!) {
@@ -34,7 +34,7 @@ class CommentsServiceClass {
 
     return result.json();
   }
-}
+};
 
-const CommentsService = new CommentsServiceClass();
-export default CommentsService;
+const commentsService = new CommentsService();
+export default commentsService;

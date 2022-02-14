@@ -1,10 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { LinkRendererProps, ImageProps } from "@graphcms/rich-text-types";
+import type { DefaultElementProps, LinkRendererProps, ImageProps } from "@graphcms/rich-text-types";
 
 import styles from "../styles/pages/post.module.scss";
 
-class RichTextConverterClass {
+class RichTextConverter {
+  headingElement({ children }: DefaultElementProps) {
+    return <h2>{children}</h2>;
+  }
+
   linkElement({ children, openInNewTab, href, rel, ...rest }: LinkRendererProps) {
     if (!href) return <></>;
     
@@ -41,7 +45,11 @@ class RichTextConverterClass {
       </div>
     );
   }
-}
 
-const RichTextConverter = new RichTextConverterClass();
-export default RichTextConverter;
+  codeBlockElement({ children }: DefaultElementProps) {
+    return <p>{children}</p>;
+  }
+};
+
+const richTextConverter = new RichTextConverter();
+export default richTextConverter;

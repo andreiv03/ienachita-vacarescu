@@ -7,7 +7,8 @@ const createComment = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     if (!GRAPHCMS_API) throw new Error("GraphCMS API not found!");
     if (!GRAPHCMS_TOKEN) throw new Error("GraphCMS Token not found!");
-    const { name, email, message, slug } = req.body;
+
+    const { email, message, name, slug } = req.body;
 
     const client = new GraphQLClient(GRAPHCMS_API, {
       headers: {
@@ -16,11 +17,11 @@ const createComment = async (req: NextApiRequest, res: NextApiResponse) => {
     });
 
     const query = gql`
-      mutation CreateComment($name: String!, $email: String!, $message: String!, $slug: String!) {
+      mutation CreateComment($email: String!, $message: String!, $name: String!, $slug: String!) {
         createComment(data: {
-          name: $name,
           email: $email,
           message: $message,
+          name: $name,
           post: {
             connect: {
               slug: $slug
@@ -32,8 +33,8 @@ const createComment = async (req: NextApiRequest, res: NextApiResponse) => {
       }
     `;
 
-    await client.request(query, { name, email, message, slug });
-    return res.status(200).json({ message: "Comment submitted!" });
+    await client.request(query, { email, message, name, slug });
+    return res.status(200).json({ message: "Success!" });
   } catch (error: any) {
     return res.status(500).json({ message: error.message });
   }
