@@ -33,9 +33,9 @@ const Footer: React.FC = () => {
 
         <div className={styles.row}>
           <div className={styles.social_media}>
-            <a href="https://www.facebook.com" target="_blank">Facebook</a>
-            <a href="https://www.instagram.com" target="_blank">Instagram</a>
-            <a href="https://www.youtube.com" target="_blank">Youtube</a>
+            <a href="https://www.facebook.com" target="_blank" rel="noreferrer">Facebook</a>
+            <a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://www.youtube.com" target="_blank" rel="noreferrer">Youtube</a>
           </div>
           
           <div className={styles.column}>
