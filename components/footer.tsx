@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
           </div>
           
           <div className={styles.column}>
-            <h5>Copyright @ {new Date().getFullYear()} All rights reserved by National College "Ienăchiță Văcărescu"</h5>
+            <h5>Copyright @ {new Date().getFullYear()} All rights reserved by National College &quot;Ienăchiță Văcărescu&quot;</h5>
           </div>
         </div>
       </div>
