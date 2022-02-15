@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
           <Link href="/" passHref>
             <div className={styles.logo}>
               <Image
-                src="/logo.svg"
+                src="/logo-white.svg"
                 alt={`National College "Ienăchiță Văcărescu"`}
                 layout="fill"
               />
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
           </div>
           
           <div className={styles.column}>
-            <h5>Copyright @ {new Date().getFullYear()} All rights reserved by National College &quot;Ienăchiță Văcărescu&quot;</h5>
+            <h5>@ {new Date().getFullYear()} All rights reserved by National College &quot;Ienăchiță Văcărescu&quot;</h5>
           </div>
         </div>
       </div>

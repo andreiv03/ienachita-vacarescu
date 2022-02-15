@@ -12,11 +12,8 @@ const Header: React.FC = () => {
   const { scrollY, scrollVerticalDirection } = useScroll();
 
   useEffect(() => {
-    if (scrollY > 80) setIsHeaderFixed(true);
-    else setIsHeaderFixed(false);
-
-    if (scrollVerticalDirection === "up") setIsHeaderVisible(true);
-    else setIsHeaderVisible(false);
+    scrollY > 80 ? setIsHeaderFixed(true) : setIsHeaderFixed(false);
+    scrollVerticalDirection === "up" ? setIsHeaderVisible(true) : setIsHeaderVisible(false);
   }, [scrollY, scrollVerticalDirection]);
 
   return (
@@ -25,7 +22,7 @@ const Header: React.FC = () => {
         <Link href="/" passHref>
           <div className={styles.logo}>
             <Image
-              src="/logo.svg"
+              src="/logo-black.svg"
               alt={`National College "Ienăchiță Văcărescu"`}
               layout="fill"
             />

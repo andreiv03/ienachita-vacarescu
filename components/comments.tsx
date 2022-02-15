@@ -79,7 +79,7 @@ const Comments: React.FC<PropsInterface> = ({ comments, slug }) => {
 
         <button type="submit" disabled={handleFormValidity()} className={`${isLoading ? styles.loading : ""} ${isSubmitted ? styles.submit : ""}`}>
           <span>Submit comment</span>
-          <span>Comment submitted for review!</span>
+          <span>Submitted for review!</span>
         </button>
       </form>
 

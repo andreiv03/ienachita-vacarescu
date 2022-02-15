@@ -15,7 +15,8 @@
     }
 
     p {
-      margin: 2rem 0;
+      max-width: 500px;
+      margin: 2rem auto;
       color: var(--foreground-two);
       font-size: 1.125rem;
       font-weight: 500;
@@ -91,7 +92,7 @@
 
       & > *:is(p):first-child::first-letter {
         float: left;
-        margin: -2.375rem 0;
+        margin: -2.375rem 0.1rem -2.375rem 0;
         color: var(--foreground-one);
         font-size: 3rem;
         font-weight: 600;

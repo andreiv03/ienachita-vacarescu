@@ -125,6 +125,9 @@ class PostsService {
 
   async getCategoryPosts(slug: string): Promise<PostInterface[]> {
     const query = gql`
+      query getCategoryPosts($slug: String!) {
+        
+      }
     `;
 
     const result = await client.request(query, { slug });
