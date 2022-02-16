@@ -76,7 +76,7 @@ const Post: NextPage<PropsInterface> = ({ post, relatedPosts, comments }) => {
       {relatedPosts.length ? (
         <div className={styles.related_posts}>
           <h2>Related articles</h2>
-          <p>Stay up to date with latest news and articles from National College "Ienăchiță Văcărescu"</p>
+          <p>Stay up to date with latest news and articles from National College &quot;Ienăchiță Văcărescu&quot;</p>
           
           <div className={styles.container}>
             {relatedPosts.map((post, index) => <Card key={index} post={post} />)}
