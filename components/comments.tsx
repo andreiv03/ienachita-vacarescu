@@ -21,6 +21,7 @@ const Comments: React.FC<PropsInterface> = ({ comments, slug }) => {
   const [formData, setFormData] = useState<FormData>(formDataInitialState);
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   const handleFormValidity = () => {
     if (!formData.email || !formData.message || !formData.name) return true;
@@ -81,10 +82,14 @@ const Comments: React.FC<PropsInterface> = ({ comments, slug }) => {
           <span>Submit comment</span>
           <span>Submitted for review!</span>
         </button>
+        
+        <h3 className={comments.length ? styles.active : ""} onClick={() => comments.length && setIsActive(true)}>
+          {comments.length ? `View comments (${comments.length})` : "There are no comments"}
+        </h3>
       </form>
 
       {comments.length ? (
-        <div className={styles.container}>
+        <div className={`${styles.container} ${isActive ? styles.active : ""}`}>
           {comments.map((comment, index) => (
             <div key={index} className={styles.comment}>
               <h5>Posted on {moment(comment.createdAt).format("MMMM DD, YYYY")}</h5>
@@ -92,8 +97,11 @@ const Comments: React.FC<PropsInterface> = ({ comments, slug }) => {
               <p>{comment.message}</p>
             </div>
           ))}
+
         </div>
       ) : null}
+
+      {comments.length ? <div className={`${styles.overlay} ${isActive ? styles.active : ""}`} onClick={() => setIsActive(false)} /> : null}
     </div>
   );
 }

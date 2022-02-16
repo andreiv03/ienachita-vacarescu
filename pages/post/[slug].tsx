@@ -4,7 +4,7 @@ import Image from "next/image";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import moment from "moment";
 
-import richTextConverter from "../../utils/rich-text-converter";
+import richTextRenderer from "../../utils/rich-text-renderer";
 import type { PostInterface } from "../../interfaces/posts-interfaces";
 import type { CommentInterface } from "../../interfaces/comments-interfaces";
 
@@ -29,23 +29,9 @@ const Post: NextPage<PropsInterface> = ({ post, relatedPosts, comments }) => {
   return (
     <div className={styles.page}>
       <div className={styles.top_section}>
+        <h5>Posted on {moment(post.createdAt).format("MMMM DD, YYYY")}</h5>
         <h1>{post.title}</h1>
         <p>{post.excerpt}</p>
-
-        <div className={styles.informations}>
-          <div className={styles.photo}>
-            <Image
-              src={post.author.photo.url}
-              alt={post.author.name}
-              layout="fill"
-            />
-          </div>
-
-          <div className={styles.text}>
-            <h3>Written by <span>{post.author.name}</span></h3>
-            <h4>Posted on {moment(post.createdAt).format("dddd, MMMM DD, YYYY")}</h4>
-          </div>
-        </div>
       </div>
 
       <div className={styles.image}>
@@ -62,15 +48,15 @@ const Post: NextPage<PropsInterface> = ({ post, relatedPosts, comments }) => {
           <RichText
             content={post.content.raw}
             renderers={{
-              h1: richTextConverter.headingElement,
-              h2: richTextConverter.headingElement,
-              h3: richTextConverter.headingElement,
-              h4: richTextConverter.headingElement,
-              h5: richTextConverter.headingElement,
-              h6: richTextConverter.headingElement,
-              a: richTextConverter.linkElement,
-              img: richTextConverter.imageElement,
-              code_block: richTextConverter.codeBlockElement
+              h1: richTextRenderer.headingElement,
+              h2: richTextRenderer.headingElement,
+              h3: richTextRenderer.headingElement,
+              h4: richTextRenderer.headingElement,
+              h5: richTextRenderer.headingElement,
+              h6: richTextRenderer.headingElement,
+              a: richTextRenderer.linkElement,
+              img: richTextRenderer.imageElement,
+              code_block: richTextRenderer.codeBlockElement
             }}
           />
         </div>
@@ -90,6 +76,8 @@ const Post: NextPage<PropsInterface> = ({ post, relatedPosts, comments }) => {
       {relatedPosts.length ? (
         <div className={styles.related_posts}>
           <h2>Related articles</h2>
+          <p>Stay up to date with latest news and articles from National College "Ienăchiță Văcărescu"</p>
+          
           <div className={styles.container}>
             {relatedPosts.map((post, index) => <Card key={index} post={post} />)}
           </div>

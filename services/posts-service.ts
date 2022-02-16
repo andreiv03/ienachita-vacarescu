@@ -10,12 +10,6 @@ class PostsService {
         post(where: {
           slug: $slug
         }) {
-          author {
-            name
-            photo {
-              url
-            }
-          }
           category {
             name
             slug
@@ -42,9 +36,6 @@ class PostsService {
     const query = gql`
       query getAllPosts {
         posts {
-          author {
-            name
-          }
           category {
             name
             slug
@@ -68,9 +59,6 @@ class PostsService {
     const query = gql`
       query getRecentPosts {
         posts(orderBy: createdAt_ASC, last: 3) {
-          author {
-            name
-          }
           category {
             name
             slug
@@ -101,9 +89,6 @@ class PostsService {
             }
           } 
         }, last: 3) {
-          author {
-            name
-          }
           category {
             name
             slug
