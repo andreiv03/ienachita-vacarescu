@@ -1,7 +1,7 @@
 .page {
   max-width: var(--large-query);
   margin: 0 auto;
-  padding: 5rem 1.5rem 5rem;
+  padding: 5rem 1.5rem;
 
   .top_section {
     max-width: var(--medium-query);
@@ -42,7 +42,7 @@
   }
 
   .article {
-    margin: 5rem 0;
+    margin-top: 5rem;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -213,8 +213,8 @@
         span {
           width: 5px;
           height: 5px;
-          background: var(--foreground-two);
           border-radius: 50%;
+          background: var(--foreground-two);
           animation: dots 750ms ease-in infinite;
 
           &:nth-child(2) {
@@ -227,16 +227,19 @@
 
   .related_posts {
     margin-top: 5rem;
+    padding-top: 5rem;
+    border-top: thin solid var(--line);
 
     & > h2 {
       font-size: 2.5rem;
+      line-height: 1.4;
       text-align: center;
       text-transform: capitalize;
     }
 
     & > p {
       max-width: var(--medium-query);
-      margin: 0.5rem auto 3rem;
+      margin: 0.75rem auto 3rem;
       color: var(--foreground-two);
       font-size: 1.125rem;
       font-weight: 500;
@@ -247,8 +250,7 @@
     .container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      row-gap: 1.5rem;
-      column-gap: 1.5rem;
+      gap: 1.5rem;
     }
   }
 }
@@ -282,18 +284,27 @@
 
     .top_section {
       margin-bottom: 4rem;
+      text-align: left;
 
       h5 {
         font-size: 0.9rem;
       }
 
       h1 {
-        margin: 1rem 0 1.5rem;
-        font-size: 2.25rem;
+        margin: 1.25rem 0 1.5rem;
+        font-size: 2rem;
       }
 
-      p {
+      p,
+      code {
         font-size: 1rem;
+      }
+
+      ul,
+      ol {
+        li {
+          font-size: 1rem;
+        }
       }
     }
 
@@ -302,11 +313,19 @@
     }
 
     .article {
-      margin: 4rem 0;
+      margin-top: 4rem;
 
       .content {
+        *:not(:first-child):not(:empty) {
+          margin-top: 1.25rem;
+        }
+
+        & > *:is(p):first-child::first-letter {
+          margin: -2.525rem 0.1rem -2.525rem 0;
+        }
+
         h2 {
-          font-size: 1.5rem;
+          font-size: 1.25rem;
         }
 
         p {
@@ -330,22 +349,22 @@
 
       .end {
         margin-top: 7.5rem;
-
-        h5 {
-          font-size: 0.8rem;
-        }
       }
     }
 
     .related_posts {
       margin-top: 4rem;
+      padding-top: 4rem;
 
       & > h2 {
         font-size: 2rem;
+        text-align: left;
       }
 
       & > p {
+        margin-bottom: 2.5rem;
         font-size: 1rem;
+        text-align: left;
       }
 
       .container {

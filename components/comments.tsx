@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { RiCloseFill } from "react-icons/ri";
 import moment from "moment";
 
 import handlers from "../utils/handlers";
@@ -41,6 +42,7 @@ const Comments: React.FC<PropsInterface> = ({ comments, slug }) => {
       setFormData(formDataInitialState);
       setIsLoading(false);
       setIsSubmitted(true);
+      setIsActive(false);
 
       const submitTimeout = setTimeout(() => setIsSubmitted(false), 3000);
       return () => clearTimeout(submitTimeout);
@@ -51,7 +53,9 @@ const Comments: React.FC<PropsInterface> = ({ comments, slug }) => {
 
   return (
     <div className={styles.comments}>
-      <h2 className={styles.title}>Leave a comment</h2>
+      <h2>Leave a comment</h2>
+      <p>Your email address will not be published. All fields are required!</p>
+
       <form onSubmit={handleFormSubmit} autoComplete="off">
         <div className={styles.row}>
           <input
@@ -90,6 +94,11 @@ const Comments: React.FC<PropsInterface> = ({ comments, slug }) => {
 
       {comments.length ? (
         <div className={`${styles.container} ${isActive ? styles.active : ""}`}>
+          <div className={styles.top_section}>
+            <h3>Comments</h3>
+            <div className={styles.close} onClick={() => setIsActive(false)}><RiCloseFill /></div>
+          </div>
+          
           {comments.map((comment, index) => (
             <div key={index} className={styles.comment}>
               <h5>Posted on {moment(comment.createdAt).format("MMMM DD, YYYY")}</h5>
@@ -97,7 +106,6 @@ const Comments: React.FC<PropsInterface> = ({ comments, slug }) => {
               <p>{comment.message}</p>
             </div>
           ))}
-
         </div>
       ) : null}
 
