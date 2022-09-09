@@ -1,11 +1,11 @@
 export default {
-  name: "category",
-  title: "Category",
+  name: "author",
+  title: "Author",
   type: "document",
   fields: [
     {
-      name: "title",
-      title: "Title",
+      name: "name",
+      title: "Name",
       type: "string",
       validation: rule => rule.required()
     },
@@ -15,7 +15,7 @@ export default {
       type: "slug",
       options: {
         maxLength: 96,
-        source: "title"
+        source: "name"
       },
       validation: rule => rule.required()
     }

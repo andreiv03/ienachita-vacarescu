@@ -1,0 +1,111 @@
+:root {
+  --foreground-primary: #1d1e1f;
+  --foreground-secondary: #;
+
+  --background-primary: #ffffff;
+  --background-secondary: #;
+
+  --gray-primary: #d2d2d3;
+  --gray-secondary: #f7f7f7;
+
+  --accent: #2e71e5;
+  --dark-accent: #0c0c45;
+  --light-accent: #7877a7;
+  --error: #f54d4d;
+
+  --header-height: 64px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+button {
+  color: var(--foreground-primary);
+  font-family: "Metro Web", sans-serif;
+  font-size: 16px;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+body {
+  background: var(--background-primary);
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--gray-secondary);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--gray-primary);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--foreground-primary);
+  }
+}
+
+// Eina01
+@font-face {
+  font-family: "Eina01";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Eina01-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Eina01";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/Eina01-Bold.woff2") format("woff2");
+}
+
+// MarkPro
+@font-face {
+  font-family: "MarkPro";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/MarkPro-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "MarkPro";
+  font-style: normal;
+  font-weight: 800;
+  src: url("/fonts/MarkPro-Heavy.woff2") format("woff2");
+}
+
+// Metro Web
+@font-face {
+  font-family: "Metro Web";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/metro-web-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Metro Web";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/metro-web-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Metro Web";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/metro-web-Bold.woff2") format("woff2");
+}

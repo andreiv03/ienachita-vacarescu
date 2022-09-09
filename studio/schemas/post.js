@@ -6,49 +6,47 @@ export default {
     {
       name: "title",
       title: "Title",
-      type: "string"
+      type: "string",
+      validation: rule => rule.required()
     },
     {
       name: "slug",
       title: "Slug",
       type: "slug",
       options: {
-        source: "title",
-        maxLength: 96
-      }
+        maxLength: 96,
+        source: "title"
+      },
+      validation: rule => rule.required()
+    },
+    {
+      name: "author",
+      title: "Author",
+      type: "reference",
+      to: {
+        type: "author"
+      },
+      validation: rule => rule.required()
     },
     {
       name: "categories",
       title: "Categories",
-      type: "reference",
-      to: {
-        type: "category"
-      }
-    },
-    {
-      name: "mainImage",
-      title: "Main Image",
-      type: "image",
-      options: {
-        hotspot: true
-      }
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "category"
+          }
+        }
+      ],
+      validation: rule => rule.required()
     },
     {
       name: "body",
       title: "Body",
-      type: "blockContent"
+      type: "blockContent",
+      validation: rule => rule.required()
     }
-  ],
-  preview: {
-    select: {
-      title: "title",
-      media: "mainImage"
-    },
-    prepare(selection) {
-      const { author } = selection
-      return Object.assign({}, selection, {
-        subtitle: author && `by ${author}`,
-      })
-    }
-  }
+  ]
 };
