@@ -1,6 +1,6 @@
 :root {
   --foreground-primary: #1d1e1f;
-  --foreground-secondary: #;
+  --foreground-secondary: #727274;
 
   --background-primary: #ffffff;
   --background-secondary: #;
@@ -73,6 +73,21 @@ body {
   src: url("/fonts/Eina01-Bold.woff2") format("woff2");
 }
 
+// Gilmer
+@font-face {
+  font-family: "Gilmer";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/Gilmer-Normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Gilmer";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/Gilmer-Bold.woff2") format("woff2");
+}
+
 // MarkPro
 @font-face {
   font-family: "MarkPro";
@@ -88,24 +103,24 @@ body {
   src: url("/fonts/MarkPro-Heavy.woff2") format("woff2");
 }
 
-// Metro Web
+// Metro
 @font-face {
   font-family: "Metro Web";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/metro-web-Regular.woff2") format("woff2");
+  src: url("/fonts/Metro-Regular.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "Metro Web";
   font-style: normal;
   font-weight: 600;
-  src: url("/fonts/metro-web-SemiBold.woff2") format("woff2");
+  src: url("/fonts/Metro-SemiBold.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "Metro Web";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/metro-web-Bold.woff2") format("woff2");
+  src: url("/fonts/Metro-Bold.woff2") format("woff2");
 }
