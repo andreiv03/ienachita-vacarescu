@@ -2,26 +2,32 @@ import groq from "groq";
 import { sanityClient } from "../utils/sanity";
 
 export interface Post {
-  _createdAt: string;
   author: {
     name: string;
     slug: string;
   },
   body: any;
-  categories: string[];
+  categories: {
+    name: string;
+    slug: string;
+  }[];
+  createdAt: string;
   title: string;
 };
 
 export const getPost = async (slug: string) => {
   const query = groq`
     *[_type == "post" && slug.current == $slug][0] {
-      _createdAt,
       "author": {
-        "name": author->name,
-        "slug": author->slug.current
+        "name": author -> name,
+        "slug": author -> slug.current
       },
       body,
-      "categories": categories[]->title,
+      "categories": categories[] -> {
+        "name": name,
+        "slug": slug.current
+      },
+      createdAt,
       title
     }
   `;

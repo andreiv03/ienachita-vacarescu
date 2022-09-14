@@ -3,6 +3,7 @@
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 5;
   display: none;
   flex-direction: column;
 
@@ -36,7 +37,7 @@
         h5,
         a {
           color: var(--foreground-primary);
-          font-family: "Metro Web", sans-serif;
+          font-family: "Metro", sans-serif;
           font-size: 1rem;
           font-weight: 700;
           text-decoration: none;

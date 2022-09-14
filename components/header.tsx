@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { Context } from "../context";
 
 import styles from "../styles/components/header.module.scss";
-const Logo = dynamic(() => import("../assets/logo.svg"));
+const Logo = dynamic(() => import("../assets/logo-v1.svg"));
 
 const Header: React.FC = () => {
   const { isMenuOpen: [isMenuOpen, setIsMenuOpen], headerRef } = useContext(Context);

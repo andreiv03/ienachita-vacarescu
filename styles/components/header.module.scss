@@ -1,6 +1,7 @@
 .header {
   position: sticky;
-  top: 0;
+  top: -0.1px;
+  z-index: 10;
   height: var(--header-height);
   padding: 0 1.5rem;
   border-bottom: 1px solid var(--gray-primary);

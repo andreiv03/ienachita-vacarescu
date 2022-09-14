@@ -20,6 +20,12 @@ export default {
       validation: rule => rule.required()
     },
     {
+      name: "createdAt",
+      title: "Creation Date",
+      type: "datetime",
+      validation: rule => rule.required()
+    },
+    {
       name: "author",
       title: "Author",
       type: "reference",

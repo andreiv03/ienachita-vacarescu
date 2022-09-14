@@ -12,7 +12,7 @@ const Menu: React.FC = () => {
 
   useEffect(() => {
     setMenuTopPosition(headerRef.current.offsetHeight + headerRef.current.getBoundingClientRect().top);
-  }, [scrollPositions.y]);
+  }, [headerRef, scrollPositions.y]);
 
   return (
     <div className={`${styles.menu} ${isMenuOpen ? styles.active : ""}`} style={{ top: `${menuTopPosition}px` }}>

@@ -3,15 +3,14 @@
   --foreground-secondary: #727274;
 
   --background-primary: #ffffff;
-  --background-secondary: #;
+  --background-secondary: #f3fbff;
 
-  --gray-primary: #d2d2d3;
-  --gray-secondary: #f7f7f7;
+  --gray-primary: #c7c7c7;
+  --gray-secondary: #e6e6e6;
 
-  --accent: #2e71e5;
-  --dark-accent: #0c0c45;
-  --light-accent: #7877a7;
-  --error: #f54d4d;
+  --accent: #1292ee;
+  --dark-accent: #005ca4;
+  --light-accent: #d6edff;
 
   --header-height: 64px;
 }
@@ -28,7 +27,7 @@ html,
 body,
 button {
   color: var(--foreground-primary);
-  font-family: "Metro Web", sans-serif;
+  font-family: "Metro", sans-serif;
   font-size: 16px;
 }
 
@@ -51,34 +50,19 @@ body {
 
   &::-webkit-scrollbar-thumb {
     background: var(--gray-primary);
+
+    &:hover {
+      background: var(--foreground-secondary);
+    }
   }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: var(--foreground-primary);
-  }
-}
-
-// Eina01
-@font-face {
-  font-family: "Eina01";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/Eina01-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Eina01";
-  font-style: normal;
-  font-weight: 700;
-  src: url("/fonts/Eina01-Bold.woff2") format("woff2");
 }
 
 // Gilmer
 @font-face {
   font-family: "Gilmer";
   font-style: normal;
-  font-weight: 500;
-  src: url("/fonts/Gilmer-Normal.woff2") format("woff2");
+  font-weight: 400;
+  src: url("/fonts/Gilmer-Regular.woff2") format("woff2");
 }
 
 @font-face {
@@ -88,38 +72,23 @@ body {
   src: url("/fonts/Gilmer-Bold.woff2") format("woff2");
 }
 
-// MarkPro
-@font-face {
-  font-family: "MarkPro";
-  font-style: normal;
-  font-weight: 700;
-  src: url("/fonts/MarkPro-Bold.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "MarkPro";
-  font-style: normal;
-  font-weight: 800;
-  src: url("/fonts/MarkPro-Heavy.woff2") format("woff2");
-}
-
 // Metro
 @font-face {
-  font-family: "Metro Web";
+  font-family: "Metro";
   font-style: normal;
   font-weight: 400;
   src: url("/fonts/Metro-Regular.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "Metro Web";
+  font-family: "Metro";
   font-style: normal;
   font-weight: 600;
   src: url("/fonts/Metro-SemiBold.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "Metro Web";
+  font-family: "Metro";
   font-style: normal;
   font-weight: 700;
   src: url("/fonts/Metro-Bold.woff2") format("woff2");

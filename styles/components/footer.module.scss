@@ -1,10 +1,13 @@
 .footer {
   padding: 1rem 1.5rem;
-  border-top: 1px solid var(--gray-primary);
+  background: var(--foreground-primary);
 
   h6 {
+    color: var(--background-primary);
     font-size: 0.75rem;
     font-weight: 700;
+    letter-spacing: 0.035rem;
+    line-height: 1.5;
     text-align: center;
   }
 }
