@@ -1,9 +1,43 @@
 import { Head, Html, Main, NextScript } from "next/document";
 
+const data = {
+  description: "National College \"Ienăchiță Văcărescu\" represents the place where students will gain what was called at the beginning of the century “high education”, a generous concept adapted to the exigencies imposed by the reality of the past years.",
+  image: "https://ienachita-vacarescu.vercel.app/assets/thumbnail-v0.jpg/",
+  title: "National College \"Ienăchiță Văcărescu\" Târgoviște",
+  url: "https://ienachita-vacarescu.vercel.app/"
+};
+
 const Document = () => {
   return (
     <Html lang="en">
       <Head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=Edge" />
+
+        <meta itemProp="name" content={data.title} />
+        <meta name="twitter:title" content={data.title} />
+        <meta property="og:site_name" content={data.title} />
+        <meta property="og:title" content={data.title} />
+
+        <meta itemProp="description" content={data.description} />
+        <meta name="description" content={data.description} />
+        <meta name="twitter:description" content={data.description} />
+        <meta property="og:description" content={data.description} />
+
+        <meta name="twitter:url" content={data.url} />
+        <meta property="og:url" content={data.url} />
+
+        <meta itemProp="image" content={data.image} />
+        <meta name="twitter:image" content={data.image} />
+        <meta property="og:image" content={data.image} />
+
+        <meta property="og:locale" content="ro_RO" />
+        <meta property="og:type" content="website" />
+
+        <link rel="canonical" href={data.url} />
+        <link rel="icon" href="/favicon.ico/" />
+        <link rel="manifest" href="/site.webmanifest/" />
+
         <link as="font" crossOrigin="" href="/fonts/Gilmer-Regular.woff2" rel="preload" />
         <link as="font" crossOrigin="" href="/fonts/Gilmer-Bold.woff2" rel="preload" />
 
