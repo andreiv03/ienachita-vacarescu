@@ -13,7 +13,6 @@ const Home: NextPage<Props> = ({ }) => {
     <div className={styles.page}>
       <Head>
         <meta itemProp="name" content={title} />
-        <meta property="og:site_name" content={title} />
         <meta property="og:title" content={title} />
         <meta name="twitter:title" content={title} />
       </Head>

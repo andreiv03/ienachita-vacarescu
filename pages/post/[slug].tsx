@@ -1,6 +1,7 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { RiFacebookFill, RiLinkedinFill, RiTwitterFill } from "react-icons/ri";
 import { PortableText } from "@portabletext/react";
 import moment from "moment";
@@ -12,6 +13,7 @@ import { portableComponents } from "../../utils/portable-components";
 import styles from "../../styles/pages/post.module.scss";
 
 interface Props {
+  host: string;
   post: Post;
 };
 
@@ -19,13 +21,15 @@ interface Params extends ParsedUrlQuery {
   slug: string;
 };
 
-const Post: NextPage<Props> = ({ post }) => {
+const Post: NextPage<Props> = ({ host, post }) => {
+  const router = useRouter();
+
   return (
     <div className={styles.page}>
       <Head>
         <meta itemProp="name" content={post.title} />
-        <meta property="og:site_name" content={post.title} />
         <meta property="og:title" content={post.title} />
+        <meta property="og:url" content={`${host}${router.asPath}`} />
         <meta name="twitter:title" content={post.title} />
         <title>{post.title}</title>
       </Head>
@@ -52,9 +56,9 @@ const Post: NextPage<Props> = ({ post }) => {
           </h5>
 
           <div className={styles.icons}>
-            <a href="https://www.facebook.com/"><RiFacebookFill /></a>
-            <a href="https://www.facebook.com/"><RiLinkedinFill /></a>
-            <a href="https://www.facebook.com/"><RiTwitterFill /></a>
+            <a href={`https://www.facebook.com/sharer/sharer.php?u=${host}${router.asPath}`} target="_blank"><RiFacebookFill /></a>
+            <a href={`http://www.linkedin.com/shareArticle?mini=true&url=${host}${router.asPath}`} target="_blank"><RiLinkedinFill /></a>
+            <a href={`https://twitter.com/intent/tweet?text=${host}${router.asPath}`} target="_blank"><RiTwitterFill /></a>
           </div>
         </div>
       </article>
@@ -79,7 +83,10 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
   const post = await getPost(slug);
 
   return {
-    props: { post },
+    props: {
+      host: process.env.HOST || "",
+      post
+    },
     revalidate: 60
   };
 }
