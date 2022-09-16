@@ -23,9 +23,11 @@ const Post: NextPage<Props> = ({ post }) => {
   return (
     <div className={styles.page}>
       <Head>
-        <title>{post.title}</title>
+        <meta itemProp="name" content={post.title} />
+        <meta property="og:site_name" content={post.title} />
         <meta property="og:title" content={post.title} />
         <meta name="twitter:title" content={post.title} />
+        <title>{post.title}</title>
       </Head>
 
       <article>
