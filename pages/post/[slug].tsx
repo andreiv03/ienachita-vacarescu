@@ -56,9 +56,9 @@ const Post: NextPage<Props> = ({ host, post }) => {
           </h5>
 
           <div className={styles.icons}>
-            <a href={`https://www.facebook.com/sharer/sharer.php?u=${host}${router.asPath}`} target="_blank"><RiFacebookFill /></a>
-            <a href={`http://www.linkedin.com/shareArticle?mini=true&url=${host}${router.asPath}`} target="_blank"><RiLinkedinFill /></a>
-            <a href={`https://twitter.com/intent/tweet?text=${host}${router.asPath}`} target="_blank"><RiTwitterFill /></a>
+            <a href={`https://www.facebook.com/sharer/sharer.php?u=${host}${router.asPath}`} rel="noreferrer" target="_blank"><RiFacebookFill /></a>
+            <a href={`http://www.linkedin.com/shareArticle?mini=true&url=${host}${router.asPath}`} rel="noreferrer" target="_blank"><RiLinkedinFill /></a>
+            <a href={`https://twitter.com/intent/tweet?text=${host}${router.asPath}`} rel="noreferrer" target="_blank"><RiTwitterFill /></a>
           </div>
         </div>
       </article>
