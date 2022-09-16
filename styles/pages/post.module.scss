@@ -231,3 +231,13 @@
     }
   }
 }
+
+@media screen and (max-width: 375px) {
+  .page {
+    article {
+      .title {
+        font-size: 2rem;
+      }
+    }
+  }
+}

@@ -14,7 +14,7 @@ const Footer = dynamic(() => import("../components/footer"));
 
 const App = ({ Component, pageProps }: AppProps) => {
   const title = `National College "Ienăchiță Văcărescu" Târgoviște`;
-  
+
   return (
     <ContextProvider>
       <Context.Consumer>
@@ -25,7 +25,7 @@ const App = ({ Component, pageProps }: AppProps) => {
               <meta itemProp="name" content={title} />
               <meta property="og:title" content={title} />
               <meta name="twitter:title" content={title} />
-              <title>{`National College "Ienăchiță Văcărescu" Târgoviște`}</title>
+              <title>{title}</title>
             </Head>
 
             <Helmet>

@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useContext } from "react";
+import { RiMapPinUserFill } from "react-icons/ri";
 
 import { Context } from "../context";
 
@@ -18,7 +19,10 @@ const Header: React.FC = () => {
         </div>
       </Link>
 
-      <button onClick={() => setIsMenuOpen(!isMenuOpen)}>Contact</button>
+      <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <RiMapPinUserFill />
+        <span>Contact</span>
+      </button>
     </header>
   );
 }
