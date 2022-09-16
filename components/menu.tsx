@@ -23,7 +23,7 @@ const Menu: React.FC = () => {
           <h3>Frequently asked questions</h3>
 
           <Collapsible label="Who are we?" styles={styles}>
-            <p>In our school the keyword is definitely <strong>perspective</strong>, which implicitly calls the future! If we want to understand the demands of reality, we could think about what Paul Valery said: <q>today, even the future is not what it was</q>. We don't have to write poetry on this topic, but we can understand that we have to prepare differently every year.</p>
+            <p>In our school the keyword is definitely <strong>perspective</strong>, which implicitly calls the future! If we want to understand the demands of reality, we could think about what Paul Valery said: <q>today, even the future is not what it was</q>. We do not have to write poetry on this topic, but we can understand that we have to prepare differently every year.</p>
             <p><strong>National College <q>Ienăchiță Văcărescu</q></strong> is the place where students will acquire what was called <q>higher education</q> at the beginning of the century, a generous concept adapted to the requirements imposed by the reality of the past years.</p>
           </Collapsible>
 
