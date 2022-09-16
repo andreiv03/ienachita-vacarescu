@@ -2,7 +2,7 @@ import { Head, Html, Main, NextScript } from "next/document";
 
 const data = {
   description: `National College "Ienăchiță Văcărescu" represents the place where students will gain what was called at the beginning of the century "high education".`,
-  image: "https://ienachita-vacarescu.vercel.app/assets/thumbnail-v0.jpg/",
+  image: "https://ienachita-vacarescu.vercel.app/assets/thumbnail-v0.jpg",
   imageAlt: `National College "Ienăchiță Văcărescu" Târgoviște`,
   url: "https://ienachita-vacarescu.vercel.app/"
 };
