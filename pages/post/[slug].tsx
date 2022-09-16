@@ -24,6 +24,8 @@ const Post: NextPage<Props> = ({ post }) => {
     <div className={styles.page}>
       <Head>
         <title>{post.title}</title>
+        <meta property="og:title" content={post.title} />
+        <meta name="twitter:title" content={post.title} />
       </Head>
 
       <article>
