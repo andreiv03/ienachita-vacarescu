@@ -21,7 +21,7 @@ const Header: React.FC = () => {
 
       <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <RiMapPinUserFill />
-        <span>Contact</span>
+        <span>FAQ</span>
       </button>
     </header>
   );

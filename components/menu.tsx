@@ -1,9 +1,11 @@
+import dynamic from "next/dynamic";
 import { useContext, useEffect, useState } from "react";
 
 import { Context } from "../context";
 import { useScroll } from "../hooks/use-scroll";
 
 import styles from "../styles/components/menu.module.scss";
+const Collapsible = dynamic(() => import("./collapsible"));
 
 const Menu: React.FC = () => {
   const { isMenuOpen: [isMenuOpen, setIsMenuOpen], headerRef } = useContext(Context);
@@ -18,17 +20,20 @@ const Menu: React.FC = () => {
     <div className={`${styles.menu} ${isMenuOpen ? styles.active : ""}`} style={{ top: `${menuTopPosition}px` }}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.column}>
-            <h4>Location</h4>
-            <h5>Calea Domnească, Nr. 235</h5>
-            <h5>Târgoviște, Dâmbovița</h5>
-          </div>
+          <h3>Frequently asked questions</h3>
 
-          <div className={styles.column}>
-            <h4>Say hello</h4>
-            <a href="mailto: secretariat.ienachita@gmail.com">secretariat.ienachita@gmail.com</a>
-            <a href="tel: +40245210966">+4024-521-0966</a>
-          </div>
+          <Collapsible label="Who are we?" styles={styles}>
+            <p>In our school the keyword is definitely <strong>perspective</strong>, which implicitly calls the future! If we want to understand the demands of reality, we could think about what Paul Valery said: <q>today, even the future is not what it was</q>. We don't have to write poetry on this topic, but we can understand that we have to prepare differently every year.</p>
+            <p><strong>National College <q>Ienăchiță Văcărescu</q></strong> is the place where students will acquire what was called <q>higher education</q> at the beginning of the century, a generous concept adapted to the requirements imposed by the reality of the past years.</p>
+          </Collapsible>
+
+          <Collapsible label="Where can we be found?" styles={styles}>
+            <p>You can find us at Calea Domnească 235, Târgoviște, Dâmbovița.</p>
+          </Collapsible>
+
+          <Collapsible label="How can you contact us?" styles={styles}>
+            <p>You can call us at phone number <a href="tel: +40245210966">0245-210-966</a> or contact us by email at <a href="mailto: secretariat.ienachita@gmail.com">secretariat.ienachita@gmail.com</a> for any information.</p>
+          </Collapsible>
         </div>
       </div>
 
