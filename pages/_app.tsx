@@ -13,6 +13,8 @@ const Menu = dynamic(() => import("../components/menu"));
 const Footer = dynamic(() => import("../components/footer"));
 
 const App = ({ Component, pageProps }: AppProps) => {
+  const title = `National College "Ienăchiță Văcărescu" Târgoviște`;
+  
   return (
     <ContextProvider>
       <Context.Consumer>
@@ -20,6 +22,9 @@ const App = ({ Component, pageProps }: AppProps) => {
           <HelmetProvider>
             <Head>
               <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+              <meta itemProp="name" content={title} />
+              <meta property="og:title" content={title} />
+              <meta name="twitter:title" content={title} />
               <title>{`National College "Ienăchiță Văcărescu" Târgoviște`}</title>
             </Head>
 

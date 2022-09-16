@@ -24,6 +24,7 @@ const Document = () => {
         <meta property="og:locale" content="ro_RO" />
         <meta property="og:site_name" content={data.title} />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content={data.url} />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:description" content={data.description} />
