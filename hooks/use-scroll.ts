@@ -4,14 +4,14 @@ export const useScroll = () => {
   if (typeof window === "undefined")
     return { x: 0, y: 0 };
 
-  const [scrollPositions, setScrollPositions] = useState({
+  const [scroll, setScroll] = useState({
     x: document.body.getBoundingClientRect().left,
     y: document.body.getBoundingClientRect().top
   });
 
   useEffect(() => {
     const handleScrollEvent = () => {
-      setScrollPositions({
+      setScroll({
         x: document.body.getBoundingClientRect().left,
         y: -document.body.getBoundingClientRect().top
       });
@@ -21,5 +21,5 @@ export const useScroll = () => {
     return () => window.removeEventListener("scroll", handleScrollEvent);
   }, []);
 
-  return scrollPositions;
+  return scroll;
 }

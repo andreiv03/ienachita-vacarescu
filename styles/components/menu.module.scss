@@ -62,12 +62,13 @@
           font-weight: 700;
           letter-spacing: 0.004rem;
           line-height: 1.4;
+          text-align: left;
           cursor: pointer;
         }
 
         .collapsible_wrapper {
           overflow: hidden;
-          transition: height 200ms ease;
+          transition: height 250ms ease;
 
           .collapsible_content {
             margin: 0.75rem 0 1.5rem;

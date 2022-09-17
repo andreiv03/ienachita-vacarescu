@@ -9,16 +9,11 @@ import styles from "../styles/components/header.module.scss";
 const Logo = dynamic(() => import("../assets/logo-v1.svg"));
 
 const Header: React.FC = () => {
-  const { isMenuOpen: [isMenuOpen, setIsMenuOpen], headerRef } = useContext(Context);
+  const { headerRef, isMenuOpen: [isMenuOpen, setIsMenuOpen] } = useContext(Context);
 
   return (
     <header className={styles.header} ref={headerRef}>
-      <Link href="/" passHref>
-        <div className={styles.logo}>
-          <Logo />
-        </div>
-      </Link>
-
+      <Link href="/" passHref><Logo /></Link>
       <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <RiMapPinUserFill />
         <span>FAQ</span>

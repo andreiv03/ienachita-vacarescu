@@ -8,7 +8,7 @@ import moment from "moment";
 import type { ParsedUrlQuery } from "querystring";
 
 import type { Post } from "../../services/post.service";
-import { portableComponents } from "../../utils/portable-components";
+import { getPortableComponents } from "../../utils/portable-components";
 
 import styles from "../../styles/pages/post.module.scss";
 
@@ -45,7 +45,7 @@ const Post: NextPage<Props> = ({ host, post }) => {
         <div className={styles.content}>
           <PortableText
             value={post.body}
-            components={portableComponents}
+            components={getPortableComponents(styles)}
           />
         </div>
 

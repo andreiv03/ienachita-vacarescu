@@ -9,8 +9,8 @@ interface Props {
 };
 
 const Collapsible: React.FC<Props> = ({ children, label, styles }) => {
-  const [isOpen, setIsOpen] = useState(false);
   const contentWrapperRef = useRef({} as HTMLDivElement);
+  const [isOpen, setIsOpen] = useState(false);
   
   return (
     <div className={styles.collapsible}>

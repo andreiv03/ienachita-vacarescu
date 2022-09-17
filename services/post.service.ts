@@ -5,7 +5,7 @@ export interface Post {
   author: {
     name: string;
     slug: string;
-  },
+  };
   body: any;
   categories: {
     name: string;
