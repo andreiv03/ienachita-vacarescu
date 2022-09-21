@@ -48,7 +48,7 @@ const Home: NextPage<Props> = ({ categories, posts }) => {
 
       <div className={styles.content}>
         <div className={styles.hero_section}>
-          <h1>School's Latest News</h1>
+          <h1>{`School's Latest News`}</h1>
           <p>{`The school's central/core values became dignity, professionalism, renewal, creativity and reinterpretation.`}</p>
         </div>
         
