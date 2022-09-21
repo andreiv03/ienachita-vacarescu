@@ -1,11 +1,9 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { RiFacebookFill, RiLinkedinFill, RiTwitterFill } from "react-icons/ri";
 import { PortableText } from "@portabletext/react";
 import moment from "moment";
-import type { ParsedUrlQuery } from "querystring";
 
 import type { Post } from "../../services/post.service";
 import { getPortableComponents } from "../../utils/portable-components";
@@ -17,19 +15,13 @@ interface Props {
   post: Post;
 };
 
-interface Params extends ParsedUrlQuery {
-  slug: string;
-};
-
 const Post: NextPage<Props> = ({ host, post }) => {
-  const router = useRouter();
-
   return (
     <div className={styles.page}>
       <Head>
         <meta itemProp="name" content={post.title} />
         <meta property="og:title" content={post.title} />
-        <meta property="og:url" content={`${host}${router.asPath}`} />
+        <meta property="og:url" content={`${host}post/${post.slug}`} />
         <meta name="twitter:title" content={post.title} />
         <title>{post.title}</title>
       </Head>
@@ -39,7 +31,7 @@ const Post: NextPage<Props> = ({ host, post }) => {
         
         <div className={styles.details}>
           <h3>Written by <Link href={`/author/${post.author.slug}`}>{post.author.name}</Link></h3>
-          <h4>Posted on <span>{moment(post.createdAt).format("MMMM DD, YYYY")}</span></h4>
+          <h3>Posted on <span>{moment(post.createdAt).format("MMMM DD, YYYY")}</span></h3>
         </div>
         
         <div className={styles.content}>
@@ -56,15 +48,15 @@ const Post: NextPage<Props> = ({ host, post }) => {
           </h5>
 
           <div className={styles.icons}>
-            <a href={`https://www.facebook.com/sharer/sharer.php?u=${host}${router.asPath}`} rel="noreferrer" target="_blank"><RiFacebookFill /></a>
-            <a href={`http://www.linkedin.com/shareArticle?mini=true&url=${host}${router.asPath}`} rel="noreferrer" target="_blank"><RiLinkedinFill /></a>
-            <a href={`https://twitter.com/intent/tweet?text=${host}${router.asPath}`} rel="noreferrer" target="_blank"><RiTwitterFill /></a>
+            <a href={`https://www.facebook.com/sharer/sharer.php?u=${host}post/${post.slug}`} rel="noreferrer" target="_blank"><RiFacebookFill /></a>
+            <a href={`http://www.linkedin.com/shareArticle?mini=true&url=${host}post/${post.slug}`} rel="noreferrer" target="_blank"><RiLinkedinFill /></a>
+            <a href={`https://twitter.com/intent/tweet?text=${host}post/${post.slug}`} rel="noreferrer" target="_blank"><RiTwitterFill /></a>
           </div>
         </div>
       </article>
     </div>
   );
-}
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { getAllPostSlugs } = await import("../../services/post.service");
@@ -74,9 +66,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: "blocking",
     paths: slugs.map(slug => ({ params: { slug } }))
   };
-}
+};
 
-export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props, { slug: string; }> = async ({ params }) => {
   const { slug = "" } = params!;
 
   const { getPost } = await import("../../services/post.service");
@@ -89,6 +81,6 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
     },
     revalidate: 60
   };
-}
+};
 
 export default Post;

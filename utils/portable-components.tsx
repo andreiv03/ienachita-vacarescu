@@ -4,7 +4,7 @@ import sanityImageURLBuilder from "@sanity/image-url";
 import { sanityClient } from "./sanity";
 
 const builder = sanityImageURLBuilder(sanityClient);
-const generateURL = (source: any) => builder.image(source).url(); 
+const generateURL = (source: any) => builder.image(source).url();
 
 export const getPortableComponents = (styles: {
   readonly [key: string]: string;
@@ -13,8 +13,9 @@ export const getPortableComponents = (styles: {
     image: ({ value }: any) => (
       <div className={styles.image}>
         <Image
-          src={generateURL(value)}
+          alt={`National College "Ienăchiță Văcărescu"`}
           layout="fill"
+          src={generateURL(value)}
         />
       </div>
     )

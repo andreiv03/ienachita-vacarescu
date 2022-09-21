@@ -3,7 +3,7 @@
   --foreground-secondary: #727274;
 
   --background-primary: #ffffff;
-  --background-secondary: #f3fbff;
+  --background-secondary: #f2f2f3;
 
   --gray-primary: #c7c7c7;
   --gray-secondary: #e6e6e6;
@@ -38,23 +38,28 @@ button {
 }
 
 body {
-  background: var(--background-primary);
+  background-color: var(--background-primary);
 
   &::-webkit-scrollbar {
     width: 0.5rem;
   }
 
   &::-webkit-scrollbar-track {
-    background: var(--gray-secondary);
+    background-color: var(--gray-secondary);
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--gray-primary);
+    background-color: var(--gray-primary);
 
     &:hover {
-      background: var(--foreground-secondary);
+      background-color: var(--foreground-secondary);
     }
   }
+}
+
+::selection {
+  background-color: var(--foreground-primary);
+  color: var(--background-primary);
 }
 
 // Gilmer

@@ -7,11 +7,12 @@ export interface Post {
     slug: string;
   };
   body: any;
-  categories: {
+  category: {
     name: string;
     slug: string;
-  }[];
+  };
   createdAt: string;
+  slug: string;
   title: string;
 };
 
@@ -23,24 +24,42 @@ export const getPost = async (slug: string) => {
         "slug": author -> slug.current
       },
       body,
-      "categories": categories[] -> {
-        "name": name,
-        "slug": slug.current
+      "category": {
+        "name": category -> name,
+        "slug": category -> slug.current
       },
       createdAt,
+      "slug": slug.current,
       title
     }
   `;
 
   const post: Post = await sanityClient.fetch(query, { slug });
   return post;
-}
+};
 
 export const getAllPostSlugs = async () => {
   const query = groq`
-    *[_type == "post" && defined(slug.current)].slug.current
+    *[_type == "post"].slug.current
   `;
 
   const slugs: string[] = await sanityClient.fetch(query);
   return slugs;
-}
+};
+
+export const getAllPosts = async () => {
+  const query = groq`
+    *[_type == "post" && createdAt < now()] | order(createdAt desc) {
+      "category": {
+        "name": category -> name,
+        "slug": category -> slug.current
+      },
+      createdAt,
+      "slug": slug.current,
+      title
+    }
+  `;
+
+  const posts: Post[] = await sanityClient.fetch(query);
+  return posts;
+};

@@ -19,8 +19,7 @@
       flex-direction: column;
       gap: 0.3rem;
 
-      h3,
-      h4 {
+      h3 {
         color: var(--foreground-secondary);
         font-size: 0.9rem;
         font-weight: 600;
@@ -113,8 +112,6 @@
     }
 
     .social_media {
-      padding: 1rem 1.5rem;
-      background: var(--background-secondary);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -135,14 +132,14 @@
           width: 2.5rem;
           height: 2.5rem;
           border-radius: 50%;
-          background: var(--light-accent);
+          background-color: var(--light-accent);
           display: flex;
           align-items: center;
           justify-content: center;
           transition: background 100ms ease;
 
           &:hover {
-            background: var(--accent);
+            background-color: var(--accent);
 
             svg {
               color: var(--background-primary);

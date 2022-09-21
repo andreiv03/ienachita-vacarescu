@@ -47,6 +47,6 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Context.Consumer>
     </ContextProvider>
   );
-}
+};
 
 export default App;

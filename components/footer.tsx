@@ -6,6 +6,6 @@ const Footer: React.FC = () => {
       <h6>Copyright © {new Date().getFullYear()} National College <q>Ienachita Vacarescu</q>. All rights reserved.</h6>
     </footer>
   );
-}
+};
 
 export default Footer;

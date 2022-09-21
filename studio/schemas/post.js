@@ -35,17 +35,12 @@ export default {
       validation: rule => rule.required()
     },
     {
-      name: "categories",
-      title: "Categories",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: {
-            type: "category"
-          }
-        }
-      ],
+      name: "category",
+      title: "Category",
+      type: "reference",
+      to: {
+        type: "category"
+      },
       validation: rule => rule.required()
     },
     {

@@ -1,17 +1,17 @@
 import { createContext, useRef, useState } from "react";
 
-interface ContextState {
+interface Context {
   headerRef: React.MutableRefObject<HTMLDivElement>;
   isMenuOpen: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
 };
 
-export const Context = createContext<ContextState>({} as ContextState);
+export const Context = createContext<Context>({} as Context);
 
 export const ContextProvider: React.FC<{ children: JSX.Element }> = ({ children }) => {
   const headerRef = useRef({} as HTMLDivElement);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const state: ContextState = {
+  const state: Context = {
     headerRef,
     isMenuOpen: [isMenuOpen, setIsMenuOpen]
   };
@@ -21,4 +21,4 @@ export const ContextProvider: React.FC<{ children: JSX.Element }> = ({ children 
       {children}
     </Context.Provider>
   );
-}
+};

@@ -1,9 +1,8 @@
 import dynamic from "next/dynamic";
 import { useContext, useEffect, useState } from "react";
+import { useScrollPosition, useWindowSize } from "@andreiv03/react-hooks";
 
 import { Context } from "../context";
-import { useScroll } from "../hooks/use-scroll";
-import { useWindowSize } from "../hooks/use-window-size";
 
 import styles from "../styles/components/menu.module.scss";
 const Collapsible = dynamic(() => import("./collapsible"));
@@ -12,15 +11,18 @@ const Menu: React.FC = () => {
   const { headerRef, isMenuOpen: [isMenuOpen, setIsMenuOpen] } = useContext(Context);
   const [menuTopPosition, setMenuTopPosition] = useState(0);
 
-  const scroll = useScroll();
+  const scrollPosition = useScrollPosition();
   const windowSize = useWindowSize();
 
   useEffect(() => {
     setMenuTopPosition(headerRef.current.offsetHeight + headerRef.current.getBoundingClientRect().top);
-  }, [headerRef, scroll.y, windowSize.width]);
+  }, [headerRef, scrollPosition.y, windowSize.width]);
 
   return (
-    <div className={`${styles.menu} ${isMenuOpen ? styles.active : ""}`} style={{ top: `${menuTopPosition}px` }}>
+    <div
+      className={`${styles.menu} ${isMenuOpen ? styles.open : ""}`}
+      style={{ top: `${menuTopPosition}px` }}
+    >
       <div className={styles.container}>
         <div className={styles.content}>
           <h3>Frequently asked questions</h3>
@@ -40,9 +42,9 @@ const Menu: React.FC = () => {
         </div>
       </div>
 
-      <div className={styles.overlay} onClick={() => setIsMenuOpen(false)} />
+      <div className={styles.backdrop} onClick={() => setIsMenuOpen(false)} />
     </div>
   );
-}
+};
 
 export default Menu;

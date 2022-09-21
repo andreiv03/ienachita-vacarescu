@@ -6,6 +6,6 @@ const Label: React.FC = () => {
       <h6>Education - Performance - Multiculturalism</h6>
     </div>
   );
-}
+};
 
 export default Label;

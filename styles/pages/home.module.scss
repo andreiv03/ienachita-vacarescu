@@ -1,2 +1,124 @@
 .page {
+  width: 100%;
+
+  .categories {
+    position: sticky;
+    top: calc(var(--header-height) - 0.1px);
+    z-index: 5;
+    height: var(--header-height);
+    padding: 0 1.5rem;
+    border-bottom: 1px solid var(--gray-primary);
+    background-color: var(--background-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+
+    h3 {
+      position: relative;
+      cursor: pointer;
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 1.5px;
+        background-color: var(--foreground-primary);
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      &.active {
+        &::after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      a {
+        color: var(--foreground-primary);
+        font-size: 1rem;
+        letter-spacing: 0.01rem;
+        line-height: 2;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .content {
+    padding: 5rem 1.5rem;
+
+    .hero_section {
+      width: min(1250px, 100%);
+      margin: 0 auto;
+      text-align: center;
+
+      h1 {
+        margin-bottom: 0.75rem;
+        font-family: "Gilmer", sans-serif;
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.2;
+      }
+
+      p {
+        max-width: 600px;
+        margin: 0 auto;
+        font-size: 1.25rem;
+        letter-spacing: 0.0125rem;
+        line-height: 1.55;
+      }
+    }
+
+    .posts {
+      margin: 5rem auto 0;
+      width: min(1250px, 100%);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 2rem;
+      column-gap: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1125px) {
+  .page {
+    .content {
+      .hero_section {
+        h1 {
+          font-size: 2.625rem;
+        }
+
+        p {
+          max-width: 500px;
+          font-size: 1.125rem;
+          line-height: 1.5;
+        }
+      }
+
+      .posts {
+        width: min(900px, 100%);
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .page {
+    .content {
+      .hero_section {
+        h1 {
+          font-size: 2.125rem;
+        }
+      }
+
+      .posts {
+        width: min(500px, 100%);
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
 }
