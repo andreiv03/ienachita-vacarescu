@@ -1,6 +1,5 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import { RiFacebookFill, RiLinkedinFill, RiTwitterFill } from "react-icons/ri";
 import { PortableText } from "@portabletext/react";
 import moment from "moment";
@@ -30,7 +29,7 @@ const Post: NextPage<Props> = ({ host, post }) => {
         <h1 className={styles.title}>{post.title}</h1>
         
         <div className={styles.details}>
-          <h3>Written by <Link href={`/author/${post.author.slug}`}>{post.author.name}</Link></h3>
+          <h3>Written by <span>{post.author}</span></h3>
           <h3>Posted on <span>{moment(post.createdAt).format("MMMM DD, YYYY")}</span></h3>
         </div>
         
