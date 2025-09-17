@@ -2,8 +2,8 @@
 node_modules/
 
 # production
-.sanity/
-dist/
+.next/
+out/
 
 # .env
 .env*

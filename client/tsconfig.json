@@ -62,7 +62,11 @@
     "maxNodeModuleJsDepth": 0,
 
     "disableSizeLimit": false,
-    "plugins": [],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
 
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

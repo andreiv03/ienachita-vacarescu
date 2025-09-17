@@ -1,0 +1,101 @@
+:root {
+  --foreground-primary: #1d1e1f;
+  --foreground-secondary: #727274;
+
+  --background-primary: #ffffff;
+  --background-secondary: #f2f2f3;
+
+  --gray-primary: #c7c7c7;
+  --gray-secondary: #e6e6e6;
+
+  --accent: #1292ee;
+  --dark-accent: #005ca4;
+  --light-accent: #d6edff;
+
+  --header-height: 64px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+input,
+select,
+button {
+  color: var(--foreground-primary);
+  font-family: "Metro", sans-serif;
+  font-size: 16px;
+}
+
+input,
+select,
+button {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+a {
+  color: var(--foreground-primary);
+  text-decoration: none;
+}
+
+html,
+body {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+// Gilmer
+@font-face {
+  font-family: "Gilmer";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Gilmer-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Gilmer";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/Gilmer-Bold.woff2") format("woff2");
+}
+
+// Metro
+@font-face {
+  font-family: "Metro";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Metro-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Metro";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/Metro-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Metro";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/Metro-Bold.woff2") format("woff2");
+}
